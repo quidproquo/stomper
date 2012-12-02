@@ -17,4 +17,9 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = 'random'
+
+  # Hooks:
+  config.before(:each) do
+    Stomper.stub(:config_dir).and_return(Pathname.new('spec/config'))
+  end
 end

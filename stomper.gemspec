@@ -7,16 +7,16 @@ require 'stomper/version'
 Gem::Specification.new do |s|
   s.name        = 'stomper'
   s.version     = Stomper::VERSION
-  s.authors     = ['TODO: Your name']
-  s.email       = ['TODO: Your email']
+  s.authors     = ['Ilya Scharrenbroich']
+  s.email       = ['N/A']
   s.homepage    = 'TODO'
-  s.summary     = 'TODO: Summary of Stomper.'
+  s.summary     = 'Simple Rails wrapper framework for Stomp gem'
   s.description = 'TODO: Description of Stomper.'
 
   s.files = Dir['{app,config,db,lib}/**/*'] + ['MIT-LICENSE', 'Rakefile', 'README.rdoc']
   s.test_files = Dir['rspec/**/*']
+  s.require_paths = ['lib']
 
-  s.add_dependency 'rails', '~> 3.2.8'
   s.add_dependency 'stomp', '~> 1.2.7'
 
   s.add_development_dependency 'rspec'

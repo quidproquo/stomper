@@ -1,0 +1,10 @@
+default: &default
+  hosts:
+   -
+    login: login1
+    passcode: passcode1
+    host: localhost
+    port: 6162
+    ssl: false
+  reliable: true
+  initial_reconnect_delay: 0.01
