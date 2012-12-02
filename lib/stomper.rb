@@ -1,0 +1,2 @@
+module Stomper
+end
