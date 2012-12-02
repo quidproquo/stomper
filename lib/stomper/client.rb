@@ -1,0 +1,3 @@
+class Stomper::Client
+
+end
