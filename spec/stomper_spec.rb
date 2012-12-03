@@ -12,6 +12,13 @@ describe Stomper do
     describe :get_config do
       subject { Stomper.get_config }
       it { should_not be_nil }
+      it 'should have array of hosts whose keys are all symbols' do
+        subject[:hosts].each { |host|
+          host.keys.each { |key|
+            key.should be_instance_of(Symbol)
+          }
+        }
+      end
     end # get_config
 
   end # class_methods

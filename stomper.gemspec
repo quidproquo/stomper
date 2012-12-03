@@ -17,6 +17,7 @@ Gem::Specification.new do |s|
   s.test_files = Dir['rspec/**/*']
   s.require_paths = ['lib']
 
+  s.add_dependency 'activesupport'
   s.add_dependency 'stomp', '~> 1.2.7'
 
   s.add_development_dependency 'rspec'

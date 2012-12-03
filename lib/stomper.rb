@@ -1,6 +1,8 @@
+require 'active_support/core_ext/hash/indifferent_access'
 require 'ostruct'
 require 'pathname'
 require 'yaml'
+
 
 module Stomper
   autoload :Client, 'stomper/client'
@@ -14,7 +16,11 @@ module Stomper
   end
 
   def self.get_config
-    self.config.marshal_dump
+    hash = self.config.marshal_dump
+    hash[:hosts].each { |host|
+      host.symbolize_keys!
+    }
+    hash
   end
 
   protected
