@@ -20,6 +20,8 @@ RSpec.configure do |config|
 
   # Hooks:
   config.before(:each) do
+    Stomper.class_variable_set(:@@config, nil)
     Stomper.stub(:config_dir).and_return(Pathname.new('spec/config'))
+    Stomper::Client.class_variable_set(:@@connection, nil)
   end
 end

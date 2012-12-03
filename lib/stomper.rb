@@ -13,6 +13,10 @@ module Stomper
     @@config
   end
 
+  def self.get_config
+    config.marshall_dump
+  end
+
   protected
 
   def self.config_dir
@@ -29,4 +33,8 @@ module Stomper
     OpenStruct.new(YAML.load_file(config_dir.join('stomper.yml'))[config_env])
   end
 
-end
+  def self.set_config(new_config)
+    new_config.each{|k,v| @@config.send(:"#{k}=", v) if !v.nil?}
+  end
+
+end # Module
