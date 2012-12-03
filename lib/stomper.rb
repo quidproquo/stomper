@@ -14,7 +14,7 @@ module Stomper
   end
 
   def self.get_config
-    config.marshall_dump
+    self.config.marshal_dump
   end
 
   protected
