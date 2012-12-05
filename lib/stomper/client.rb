@@ -11,7 +11,10 @@ class Stomper::Client
   protected
 
   def self.connection
-    @@connection ||= Stomp::Connection.new(Stomper.get_config)
+    unless @@connection && @@connection.open?
+      @@connection = Stomp::Connection.new(Stomper.get_config)
+    end
+    @@connection
   end
 
 end

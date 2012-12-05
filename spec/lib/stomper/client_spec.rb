@@ -7,12 +7,26 @@ describe Stomper::Client do
 
   before {
     Stomp::Connection.stub(:new).and_return(connection)
+    connection.stub(:open?).and_return(true)
+    connection.stub(:closed?).and_return(false)
   }
 
   describe :class_methods do
     describe :connection do
       subject { Stomper::Client.connection }
       it { should_not be_nil }
+
+      context 'connection is closed' do
+        let(:new_connection) { double(:new_connection) }
+        before {
+          Stomper::Client.connection
+          connection.stub(:open?).and_return(false)
+          connection.stub(:closed?).and_return(true)
+          Stomp::Connection.stub(:new).and_return(new_connection)
+        }
+        it { should_not be_nil }
+        it { should == new_connection }
+      end
     end
 
     describe :publish do
